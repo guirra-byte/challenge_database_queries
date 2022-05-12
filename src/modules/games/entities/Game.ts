@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 
 import { User } from '../../users/entities/User';
+import { Genres } from './Genres';
 
 @Entity('games')
 export class Game {
@@ -25,4 +26,7 @@ export class Game {
 
   @UpdateDateColumn()
   updated_at: Date;
+
+  @ManyToMany(() => Genres, (genres) => genres.games)
+  genres: Genres[]
 }
